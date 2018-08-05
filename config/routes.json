@@ -1,0 +1,14 @@
+[
+    {
+        "path":             "/",
+        "actionController": "home#home",
+        "method":           "GET",
+        "as":               "home"
+    },
+    {
+        "path":             "/welcome",
+        "actionController": "home#welcome",
+        "method":           "GET",
+        "as":               "home_welcome"
+    }
+]

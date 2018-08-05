@@ -1,0 +1,25 @@
+{
+  "name": "agate",
+  "version": "1.0.0",
+  "description": "A wordpress clone build with node",
+  "main": "index.ts",
+  "scripts": {
+    "start": "npm run build:live",
+    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts"
+  },
+  "author": "Sa61",
+  "license": "ISC",
+  "dependencies": {
+    "@types/ejs": "^2.6.0",
+    "@types/express": "^4.16.0",
+    "@types/lodash": "^4.14.116",
+    "ejs": "^1.0.0",
+    "express": "^4.16.3",
+    "save": "^2.3.2",
+    "ts-node": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^10.5.6",
+    "typescript": "^3.0.1"
+  }
+}
