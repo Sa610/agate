@@ -29,14 +29,15 @@ export default class Routes {
 
             ctrl[route.action]();
 
-            actionRendered      = ejs.render(
-                fs.readFileSync(__dirname + `/../../app/views/${route.controller}/${route.action}.ejs`).toString(),
-                {
-                    route:  route,
-                    scope:  ctrl.scope,
-                    req:    req
-                }
-            );
+            ejs.renderFile(__dirname + `/../../app/views/${route.controller}/${route.action}.ejs`, {
+                route:  route,
+                scope:  ctrl.scope,
+                req:    req
+            }, (err: any, result: any): string => {
+                actionRendered = result;
+
+                return result;
+            });
 
             res.render(`layouts/${ctrl.layout}`, {
                 route:  route,
@@ -45,7 +46,7 @@ export default class Routes {
                 main:   actionRendered
             });
 
-            // res.send('Mmmmmmm');
+            res.end();
         } else {
             new NotFoundError(req, res);
         }
