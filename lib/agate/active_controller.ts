@@ -1,4 +1,4 @@
-export default class BaseController {
+export default class ActiveController {
     public      scope:      any = {};
 
     protected   request:    any;

@@ -1,5 +1,5 @@
-import BaseController from "../../lib/agate/base_controller";
+import ActiveController from "../../lib/agate/active_controller";
 
-export default class ApplicationController extends BaseController {
+export default class ApplicationController extends ActiveController {
     protected layout: string = 'application';
 }

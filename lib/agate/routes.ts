@@ -12,7 +12,7 @@ export default class Routes {
     public routeList: any;
 
     constructor() {
-        console.log('Routes initialization');
+        console.log('Routes initialization...');
 
         this.routeList = JSON.parse(fs.readFileSync(__dirname + '/../../config/routes.json').toString());
 
@@ -45,6 +45,8 @@ export default class Routes {
                 req:    req,
                 main:   actionRendered
             });
+
+            console.log(`${req.method}: ${req.originalUrl} - ${route.controllerAction} -> ${_.camelCase(route.urlHelper)}Url()\n`);
 
             res.end();
         } else {
