@@ -10,6 +10,8 @@ const app           = express();
 const routes        = new Routes();
 const knex          = Knex(KnexConfig.development);
 
+const PORT          = process.env.port || 8080;
+
 Model.knex(knex);
 
 app.set('views', __dirname + '/app/views');
@@ -23,4 +25,6 @@ app.use('/*', (req, res) => {
     routes.call(req, res);
 });
 
-app.listen(8080);
+console.log(`Running server on port: http://localhost:${PORT}\n`);
+
+app.listen(PORT);

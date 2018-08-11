@@ -24,7 +24,7 @@ export default class Routes {
 
         if(matchingRoutes.length > 0) {
             let route           = new Route(_.last(matchingRoutes));
-            let ctrl            = new (Controllers as any)[route.controller + "Controller"](req);
+            let ctrl            = new (Controllers as any)[_.camelCase(route.controller) + "Controller"](req);
             let actionRendered  = "";
 
             ctrl[route.action]();
