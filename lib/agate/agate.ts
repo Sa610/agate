@@ -1,6 +1,7 @@
 import fs                   from 'fs';
 import _                    from 'lodash';
 import ejs                  from 'ejs';
+import path                 from 'path';
 
 import * as Controllers     from './controllers_module';
 import Environment          from './environment';
@@ -8,6 +9,9 @@ import Environment          from './environment';
 import { NotFoundError }    from './errors/base_error';
 
 import Route                from './route';
+
+const sass                  = require('sass');
+const LogColors             = require('./utils/log_colors');
 
 export default class Agate {
     public routeList:   any;
@@ -55,6 +59,35 @@ export default class Agate {
         } else {
             new NotFoundError(req, res);
         }
+    }
+
+    public compileAssets(assetsList: Array<string>): any {
+        assetsList.forEach((file: string): void => {
+            file            = file.replace('css/', '');
+            let filePath    = path.join(this.env.appDir.css, file);
+            let distrPath   = path.join(this.env.appDir.cssDistr, file);
+
+            let folders     = ('distr/' + file).split('/');
+            folders.splice(-1);
+
+            let finalDir    = this.env.appDir.css;
+
+            folders.forEach((dir: string): void => {
+                finalDir    += `/${dir}`;
+
+                try         { fs.mkdirSync(finalDir); }
+                catch (e)   {}
+            });
+
+            let result      = sass.renderSync({ file: filePath, outputStyle: 'compressed'});
+
+            let finalPath   = `${finalDir}/${_.last(file.split('/'))}`;
+
+            fs.writeFileSync(finalPath, result.css);
+
+            console.log(`${LogColors.FG_GREEN} • Compiled file: ${LogColors.UNDERSCORE}${LogColors.FG_WHITE}`,
+                        `${finalPath.replace(this.env.appDir.css, '')}${LogColors.RESET}`);
+        });
     }
 
     private getMatchingRoutes(req: any): Array<any> {

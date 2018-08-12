@@ -21,12 +21,18 @@ export default class Environment {
         indexDirName = path.normalize(indexDirName);
 
         let directories: any = {
-            'app':          path.join(indexDirName, 'app'),
-            'config':       path.join(indexDirName, 'config'),
-            'lib':          path.join(indexDirName, 'lib'),
-            'controllers':  path.join(indexDirName, 'app/controllers'),
-            'models':       path.join(indexDirName, 'app/models'),
-            'views':        path.join(indexDirName, 'app/views')
+            'app':              path.join(indexDirName, 'app'),
+            'config':           path.join(indexDirName, 'config'),
+            'lib':              path.join(indexDirName, 'lib'),
+            'controllers':      path.join(indexDirName, 'app/controllers'),
+            'models':           path.join(indexDirName, 'app/models'),
+            'views':            path.join(indexDirName, 'app/views'),
+            'assets':           path.join(indexDirName, 'app/assets'),
+            'images':           path.join(indexDirName, 'app/assets/images'),
+            'css':              path.join(indexDirName, 'app/assets/css'),
+            'javascript':       path.join(indexDirName, 'app/assets/javascript'),
+            'javascriptDistr':  path.join(indexDirName, 'app/assets/javascript/distr'),
+            'cssDistr':         path.join(indexDirName, 'app/assets/css/distr')
         };
 
         return directories;
@@ -39,7 +45,8 @@ export default class Environment {
             'controllerTemplate':   path.join(indexDirName, 'lib/agate/templates/controller.ts.ejs'),
             'modelTemplate':        path.join(indexDirName, 'lib/agate/templates/model.ts.ejs'),
             'routes':               path.join(indexDirName, 'config/routes.json'),
-            'dbConf':               path.join(indexDirName, 'config/db.ts')
+            'dbConf':               path.join(indexDirName, 'config/db.ts'),
+            'assetsConf':           path.join(indexDirName, 'config/assets.json')
         };
 
         return files;

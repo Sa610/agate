@@ -4,8 +4,9 @@
   "description": "A wordpress clone build with node",
   "main": "index.ts",
   "scripts": {
-    "start": "./node_modules/.bin/ts-node -- ./index.ts",
-    "debug": "npm run build:live",
+    "production": "./node_modules/.bin/ts-node -- ./index.ts",
+    "development": "npm run build:live",
+    "debug": "node --inspect-brk ./node_modules/.bin/ts-node -- ./index.ts",
     "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts"
   },
   "author": "Sa61",
@@ -20,13 +21,13 @@
     "lodash-inflection": "^1.5.0",
     "mysql2": "^1.6.1",
     "objection": "^1.2.2",
+    "sass": "^1.10.4",
     "save": "^2.3.2",
     "ts-node": "^7.0.0",
     "yargs": "^12.0.1"
   },
   "devDependencies": {
     "@types/node": "^10.5.6",
-    "node-sass": "^4.9.3",
     "typescript": "^3.0.1"
   }
 }

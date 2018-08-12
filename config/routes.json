@@ -4,5 +4,11 @@
         "controllerAction": "home#welcome",
         "method":           "GET",
         "as":               "homeWelcome"
+    },
+    {
+        "path":             "/admin/articles",
+        "controllerAction": "admin/articles#index",
+        "method":           "GET",
+        "as":               "adminArticles"
     }
 ]
