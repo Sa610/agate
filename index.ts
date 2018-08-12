@@ -2,12 +2,12 @@ import express      from 'express';
 import path         from 'path';
 import { Model }    from 'objection';
 
-import Routes       from './lib/agate/routes';
+import Agate        from './lib/agate/agate';
 import KnexConfig   from './config/db';
 
 const Knex          = require('knex');
 const app           = express();
-const routes        = new Routes();
+const agate         = new Agate(__dirname);
 const knex          = Knex(KnexConfig.development);
 
 const PORT          = process.env.port || 8080;
@@ -22,7 +22,7 @@ app.use('/*.(svg|png|jpe?g|png)', (req, res) => {
 });
 
 app.use('/*', (req, res) => {
-    routes.call(req, res);
+    agate.call(req, res);
 });
 
 console.log(`Running server on port: http://localhost:${PORT}\n`);

@@ -3,18 +3,21 @@ import _    from 'lodash';
 import ejs  from 'ejs';
 
 import * as Controllers     from './controllers_module';
+import Environment          from './environment';
 
 import { NotFoundError }    from './errors/base_error';
 
 import Route                from './route';
 
-export default class Routes {
-    public routeList: any;
+export default class Agate {
+    public routeList:   any;
+    public env:         Environment;
 
-    constructor() {
-        console.log('Routes initialization...');
+    constructor(dirName: string) {
+        console.log('Agate initialization...');
 
-        this.routeList = JSON.parse(fs.readFileSync(__dirname + '/../../config/routes.json').toString());
+        this.env        = new Environment(dirName);
+        this.routeList  = JSON.parse(fs.readFileSync(this.env.appFiles.routes).toString());
 
         this.declareUrlHelper();
     }
@@ -29,7 +32,7 @@ export default class Routes {
 
             ctrl[route.action]();
 
-            ejs.renderFile(__dirname + `/../../app/views/${route.controller}/${route.action}.ejs`, {
+            ejs.renderFile(this.env.appDir.views + `/${route.controller}/${route.action}.ejs`, {
                 route:  route,
                 scope:  ctrl.scope,
                 req:    req
