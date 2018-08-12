@@ -39,7 +39,7 @@ export default class Environment {
             'controllerTemplate':   path.join(indexDirName, 'lib/agate/templates/controller.ts.ejs'),
             'modelTemplate':        path.join(indexDirName, 'lib/agate/templates/model.ts.ejs'),
             'routes':               path.join(indexDirName, 'config/routes.json'),
-            'db_conf':              path.join(indexDirName, 'config/db.ts')
+            'dbConf':               path.join(indexDirName, 'config/db.ts')
         };
 
         return files;
