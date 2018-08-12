@@ -1,6 +1,6 @@
-import fs   from 'fs';
-import _    from 'lodash';
-import ejs  from 'ejs';
+import fs                   from 'fs';
+import _                    from 'lodash';
+import ejs                  from 'ejs';
 
 import * as Controllers     from './controllers_module';
 import Environment          from './environment';
