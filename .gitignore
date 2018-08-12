@@ -60,3 +60,7 @@ typings/
 
 # next.js build output
 .next
+
+# Distribution folders
+app/assets/css/distr
+app/assets/javascript/distr
